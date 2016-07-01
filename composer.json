@@ -1,0 +1,24 @@
+{
+    "name": "gutplushe/ApnsPHP",
+    "description": "信鸽推送在Laravel5封装包。",
+    "keywords": ["L5", "Laravel 5", "Laravel", "XingeApp SDK", "ApnsPHP SDK"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "gutplushe",
+            "email": "969198465@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*",
+        "illuminate/config": "5.*",
+        "curl/curl": "1.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gutplushe\\ApnsPHP\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
