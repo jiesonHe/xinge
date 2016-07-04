@@ -4,7 +4,7 @@ namespace Gutplushe\ApnsPHP;
 
 use Illuminate\Support\ServiceProvider;
 
-class XingeServiceProvider extends ServiceProvider
+class XingeAppServiceProvider extends ServiceProvider
 {
 
 	/**
@@ -13,7 +13,7 @@ class XingeServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->publishes([
-			__DIR__ . '/config/config.php' => config_path('gutplushe-xingePush.php'),
+			__DIR__ . '/config/config.php' => config_path('gutplushe-xinge.php'),
 		], 'config');
 	}
 
@@ -24,20 +24,20 @@ class XingeServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->mergeConfigFrom(__DIR__ . '/config/config.php', 'gutplushe-xingePush');
+		$this->mergeConfigFrom(__DIR__ . '/config/config.php', 'gutplushe-xinge');
 
 		$this->app->singleton('xingePush.ios', function ($app) {
 
-			$config = $app->config->get('gutplushe-xingePush');
+			$config = $app->config->get('gutplushe-xinge');
 
-			return new XingeApp($config['ios']['accessId'], $config['ios']['secretKey']);
+			return new IosPush($config['ios']['accessId'], $config['ios']['secretKey']);
 		});
 
 		$this->app->singleton('xingePush.android', function ($app) {
 
-			$config = $app->config->get('gutplushe-xingePush');
+			$config = $app->config->get('gutplushe-xinge');
 
-			return new XingeApp($config['android']['accessId'], $config['android']['secretKey']);
+			return new AndroidPush($config['android']['accessId'], $config['android']['secretKey']);
 		});
 	}
 
